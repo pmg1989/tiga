@@ -1,3 +1,9 @@
+type LifeCycleModel = {
+  onLoad?: () => Promise<void> | void
+  onShow?: (...args: any[]) => Promise<void> | void
+  onLeave?: () => Promise<void> | void
+}
+
 type EffectsModel = Record<string, (...args: any[]) => Promise<any>>
 
 type Action<P = any> = P extends void ? { type: string; payload: void } : { type: string; payload: P }
@@ -20,21 +26,23 @@ type ReducerCallReducer<S, R extends ReducersModel<S>> = {
   [reducerKey in keyof R]: ThisReducerType<S, R[reducerKey]>
 }
 
-type Model<S, E extends EffectsModel, R extends ReducersModel<S>> = {
+type Model<S, L extends LifeCycleModel | void, E extends EffectsModel | void, R extends ReducersModel<S>> = {
   namespace: string
   state: S
+  lifecycle: L & ThisType<E & EffectCallReducer<S, R>>
   effects: E & ThisType<E & EffectCallReducer<S, R>>
   reducers: R & ThisType<ReducerCallReducer<S, R> & { initState: S }>
 }
 
-type FinalModel<S, E extends EffectsModel, R extends ReducersModel<S>> = {
+type FinalModel<S, L extends LifeCycleModel | void, E extends EffectsModel, R extends ReducersModel<S>> = {
   namespace: string
   state: S
+  lifecycle: L & ThisType<E & EffectCallReducer<S, R>>
   effects: E & ThisType<E & EffectCallReducer<S, R>>
   reducers: R & ThisType<EffectCallReducer<S, R>>
 }
 
-export const createModel = <S, E extends EffectsModel, R extends ReducersModel<S>>(model: Model<S, E, R>): FinalModel<S, E, R> => {
+export const createModel = <S, L extends LifeCycleModel, E extends EffectsModel, R extends ReducersModel<S>>(model: Model<S, L, E, R>): FinalModel<S, L, E, R> => {
   const finalModel: any = model
-  return finalModel as FinalModel<S, E, R>
+  return finalModel as FinalModel<S, L, E, R>
 }

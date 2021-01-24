@@ -1,0 +1,36 @@
+{
+  "name": "tiga",
+  "version": "1.0.0",
+  "description": "tiga redux",
+  "main": "src/index.ts",
+  "repository": "git@github.com:pmg1989/tiga.git",
+  "author": "minggao.pan <minggao.pan@xianghuanji.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "prettier": "^2.1.2",
+    "typescript": "^4.1.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "printWidth": 320,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true
+  }
+}

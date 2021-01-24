@@ -20,19 +20,26 @@ const model = createModel({
     page: 1,
     pageSize: 10,
   } as InitState,
-  effects: {
-    async onLoad() {},
+  lifecycle: {
+    async onLoad() {
+      this.setPage({ page: 1 })
+    },
     async onShow(query: { id: number }) {
       const list = await this.getList(query.id, 1, 10)
       console.log(list[0].id)
     },
+    onLeave() {
+      this.reset()
+    }
+  },
+  effects: {
     async getList(id: number, page: number, pageSize: number) {
       const list = await getListService()
       const reducer = this.setList({ page: 1, pageSize, list })
-      console.log(reducer.payload.list[0].id)
+      console.log(reducer.type, reducer.payload.list[0].id)
 
       const reducer2 = this.setPage({ page: 1 })
-      console.log(reducer2.payload.page)
+      console.log(reducer.type, reducer2.payload.page)
 
       return list
     },
@@ -62,12 +69,14 @@ const model = createModel({
 })
 
 console.log(model.state.list[0].id)
-console.log(model.effects.onShow({ id: 123 }))
+console.log(model.lifecycle.onShow({ id: 123 }))
+console.log(model.effects.getList(123, 1, 10))
 console.log(model.reducers.setPage(model.state, { page: 1 }))
 
 type Model = typeof model
 
 const modelInstance = {} as Model
 console.log(modelInstance.state.list[0].id)
-console.log(modelInstance.effects.onShow({ id: 123 }))
+console.log(modelInstance.lifecycle.onShow({ id: 123 }))
+console.log(modelInstance.effects.getList(123, 1, 10))
 console.log(modelInstance.reducers.setPage(model.state, { page: 1 }))
