@@ -18,7 +18,6 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "declaration": true,
-    "declarationDir": "./typings",
     "typeRoots": [
       "node_modules/@types"
     ],
