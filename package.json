@@ -1,13 +1,21 @@
 {
   "name": "@pmg1989/tiga",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tiga redux",
   "main": "dist",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": "git@github.com:pmg1989/tiga.git",
-  "author": { "name": "pmg1989", "email": "972401854@qq.com" },
-  "keywords": ["tiga", "redux"],
+  "author": {
+    "name": "pmg1989",
+    "email": "972401854@qq.com"
+  },
+  "keywords": [
+    "tiga",
+    "redux"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "tsc -p tsconfig.json -w",
