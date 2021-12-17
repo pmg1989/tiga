@@ -5,12 +5,12 @@ async function getListService(): Promise<InitState['list']> {
 }
 
 type InitState = {
-  page: number
-  pageSize: number
+  page: number;
+  pageSize: number;
   list: {
-    id: number
-    title: string
-  }[]
+    id: number;
+    title: string;
+  }[];
 }
 
 const model = createModel({
@@ -30,12 +30,12 @@ const model = createModel({
     },
     onLeave() {
       this.reset()
-    }
+    },
   },
   effects: {
-    async getList(id: number, page: number, pageSize: number) {
+    async getList(_id: number, page: number, pageSize: number) {
       const list = await getListService()
-      const reducer = this.setList({ page: 1, pageSize, list })
+      const reducer = this.setList({ page, pageSize, list })
       console.log(reducer.type, reducer.payload.list[0].id)
 
       const reducer2 = this.setPage({ page: 1 })

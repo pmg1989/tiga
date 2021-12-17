@@ -1,56 +1,33 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "esnext",
-      "lib": [
-        "dom",
-        "dom.iterable",
-        "esnext"
-      ],
-      "strict": true,
-      "strictPropertyInitialization": false,
-      "sourceMap": true,
-      "inlineSources": true,
-      "sourceRoot": "/",
-      "allowJs": true,
-      "skipLibCheck": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
-      "forceConsistentCasingInFileNames": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "noEmit": true,
-      "jsx": "react",
-      "experimentalDecorators": true,
-      "downlevelIteration": true,
-      "typeRoots": [
-        "node_modules/@types"
-      ],
-      "baseUrl": "src",
-      "paths": {
-        "$assets/*": [
-          "assets/*"
-        ],
-        "$common/*": [
-          "common/*"
-        ],
-        "$api/*": [
-          "common/services/api/*"
-        ],
-        "$pages/*": [
-          "pages/*"
-        ],
-        "$layouts/*": [
-          "layouts/*"
-        ]
-      }
-    },
-    "include": [
-      "global.d.ts",
-      "src"
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ],
-    "exclude": [
-      "node_modules"
-    ]
-  }
-  
+    "allowJs": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "declaration": true,
+    "declarationDir": "./typings",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+  },
+  "include": [
+    "./src/**/*.ts",
+
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}
